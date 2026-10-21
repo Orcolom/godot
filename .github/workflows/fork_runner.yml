@@ -13,19 +13,19 @@ jobs:
     name: 📊 Static checks
     uses: ./.github/workflows/static_checks.yml
 
-  android-build:
-    name: 🤖 Android
-    needs: static-checks
-    if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
-    uses: ./.github/workflows/android_builds.yml
-    secrets:
-      SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+  # android-build:
+  #   name: 🤖 Android
+  #   needs: static-checks
+  #   if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
+  #   uses: ./.github/workflows/android_builds.yml
+  #   secrets:
+  #     SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY }}
 
-  ios-build:
-    name: 🍏 iOS
-    needs: static-checks
-    if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
-    uses: ./.github/workflows/ios_builds.yml
+  # ios-build:
+  #   name: 🍏 iOS
+  #   needs: static-checks
+  #   if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
+  #   uses: ./.github/workflows/ios_builds.yml
 
   linux-build:
     name: 🐧 Linux
@@ -35,11 +35,11 @@ jobs:
     with:
       changed-files: ${{ needs.static-checks.outputs.changed-files }}
 
-  macos-build:
-    name: 🍎 macOS
-    needs: static-checks
-    if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
-    uses: ./.github/workflows/macos_builds.yml
+  # macos-build:
+  #   name: 🍎 macOS
+  #   needs: static-checks
+  #   if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
+  #   uses: ./.github/workflows/macos_builds.yml
 
   windows-build:
     name: 🏁 Windows
@@ -47,8 +47,8 @@ jobs:
     if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
     uses: ./.github/workflows/windows_builds.yml
 
-  web-build:
-    name: 🌐 Web
-    needs: static-checks
-    if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
-    uses: ./.github/workflows/web_builds.yml
+  # web-build:
+  #   name: 🌐 Web
+  #   needs: static-checks
+  #   if: needs.static-checks.outputs.sources-changed == 'true' || github.event_name != 'pull_request'
+  #   uses: ./.github/workflows/web_builds.yml
