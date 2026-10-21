@@ -36,10 +36,9 @@ jobs:
             cache-name: windows-editor-mono
             target: editor
             scons-flags: >-
-              windows_subsystem=console
-              vsproj=yes
-              vsproj_gen_only=no
+              production=yes
               module_mono_enabled=yes
+              d3d12=yes
             bin: ./bin/godot.windows.editor.x86_64.mono.exe
             build-mono: true
             artifact: true
@@ -69,7 +68,10 @@ jobs:
           - name: Template w/ mono (target=template_release)
             cache-name: windows-template-mono
             target: template_release
-            scons-flags: module_mono_enabled=yes
+            scons-flags:  >-
+              production=yes
+              module_mono_enabled=yes
+              d3d12=yes
             bin: ./bin/godot.windows.template_release.x86_64.mono.console.exe
             compiler: msvc
             artifact: true
@@ -77,7 +79,9 @@ jobs:
           - name: Template w/ mono (target=template_debug)
             cache-name: windows-template-mono-debug
             target: template_debug
-            scons-flags: module_mono_enabled=yes
+            scons-flags:  >-
+              module_mono_enabled=yes
+              d3d12=yes
             bin: ./bin/godot.windows.template_debug.x86_64.mono.console.exe
             compiler: msvc
             artifact: true
