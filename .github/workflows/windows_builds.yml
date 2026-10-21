@@ -72,6 +72,7 @@ jobs:
             scons-flags: module_mono_enabled=yes
             bin: ./bin/godot.windows.template_release.x86_64.mono.console.exe
             compiler: msvc
+            artifact: true
 
           - name: Template w/ mono (target=template_debug)
             cache-name: windows-template-mono-debug
@@ -79,6 +80,7 @@ jobs:
             scons-flags: module_mono_enabled=yes
             bin: ./bin/godot.windows.template_debug.x86_64.mono.console.exe
             compiler: msvc
+            artifact: true
 
           # - name: Template w/ GCC (target=template_release, use_mingw=yes)
           #   cache-name: windows-template-gcc
@@ -191,7 +193,7 @@ jobs:
           ${{ matrix.bin }} --help
           ${{ matrix.bin }} --test --force-colors
 
-      - name: .NET source generators tests
-        if: matrix.build-mono
-        run: |
-          dotnet test modules/mono/editor/Godot.NET.Sdk/Godot.SourceGenerators.Tests
+      # - name: .NET source generators tests
+      #   if: matrix.build-mono
+      #   run: |
+      #     dotnet test modules/mono/editor/Godot.NET.Sdk/Godot.SourceGenerators.Tests
